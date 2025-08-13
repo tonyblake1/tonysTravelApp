@@ -1,14 +1,20 @@
 package com.tonysTravelApp;
 
+import java.util.Map;
+
+import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 /**
 * FlightSearchController handles flight search requests using Amadeus API based on user input.
 */
 @RestController
-@RequestMapping("/api/v1/flights")
 public class FlightSearchController {
    
    private final AmadeusApiClientService amadeusApiClientService;
@@ -37,6 +43,24 @@ public class FlightSearchController {
            @RequestParam String departureDate,
            @RequestParam(defaultValue = "1") int adults) {
        
-        return amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+        String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+
+        //parseData(response);
+
+        return response;
+   }
+
+   public void parseData(String jsonString)
+   {
+       JsonObject data = new Gson().fromJson(jsonString, JsonObject.class);
+
+       JsonArray names = data .get("data").getAsJsonArray();
+
+       for(JsonElement element : names){
+          
+          JsonObject object = element.getAsJsonObject();
+
+          System.out.println(object.get("type").getAsJsonObject().get("name").getAsString());
+       } 
    }
 }
