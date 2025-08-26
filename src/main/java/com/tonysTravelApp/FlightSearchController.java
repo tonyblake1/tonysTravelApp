@@ -46,23 +46,23 @@ public class FlightSearchController {
        
         String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
 
-        //parseData(response);
+        String data = parseData(response);
 
-        return response;
+        return data;
    }
 
-   public void parseData(String jsonString)
+   public String parseData(String input)
    {
-       JsonObject data = new Gson().fromJson(jsonString, JsonObject.class);
+      int output;
 
-       JsonArray names = data .get("data").getAsJsonArray();
+      JSONObject jsonObject= new JSONObject(input);
+    
+      output=jsonObject.getJSONArray("data")
+                       .getJSONObject(0)
+                       .getInt("numberOfBookableSeats");
+                       
 
-       for(JsonElement element : names){
-          
-          JsonObject object = element.getAsJsonObject();
-
-          System.out.println(object.get("type").getAsJsonObject().get("name").getAsString());
-       } 
+      return "Number of bookable seats: " + output;
    }
 
    @GetMapping("/test")
