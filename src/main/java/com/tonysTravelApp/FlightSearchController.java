@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.Gson;
@@ -41,13 +42,19 @@ public class FlightSearchController {
    
    @GetMapping("/search")
    public String searchFlights(
-           @RequestParam String origin,   // test with DUB
-           @RequestParam String destination, // test with NYC
-           @RequestParam String departureDate,  // test with 2025-09-01
-           @RequestParam(defaultValue = "1") int adults) // test with 2
+           @RequestParam(name="origin", required=true, defaultValue="DUB") String origin,
+           @RequestParam(name="destination", required=true, defaultValue="NYC") String destination,
+           @RequestParam(name="departureDate", required=true, defaultValue="2025-09-01") String departureDate,
+           @RequestParam(name="adults", required=true, defaultValue="2")  int adults, 
+           Model model)
    {
        
         String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+
+        model.addAttribute("origin", origin);
+        model.addAttribute("destination", destination);
+        model.addAttribute("departureDate", departureDate);
+        model.addAttribute("adults", adults);
 
         String data = parseData(response);
 
