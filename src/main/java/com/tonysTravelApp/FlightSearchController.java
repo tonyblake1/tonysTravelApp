@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.Gson;
@@ -15,7 +16,8 @@ import org.json.JSONObject;
 /**
 * FlightSearchController handles flight search requests using Amadeus API based on user input.
 */
-@RestController
+//@RestController
+@Controller
 public class FlightSearchController {
    
    private final AmadeusApiClientService amadeusApiClientService;
@@ -39,16 +41,17 @@ public class FlightSearchController {
    
    @GetMapping("/search")
    public String searchFlights(
-           @RequestParam String origin,
-           @RequestParam String destination,
-           @RequestParam String departureDate,
-           @RequestParam(defaultValue = "1") int adults) {
+           @RequestParam String origin,   // test with DUB
+           @RequestParam String destination, // test with NYC
+           @RequestParam String departureDate,  // test with 2025-09-01
+           @RequestParam(defaultValue = "1") int adults) // test with 2
+   {
        
         String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
 
         String data = parseData(response);
 
-        return data;
+        return "searchResults";
    }
 
    public String parseData(String input)
@@ -117,6 +120,6 @@ public class FlightSearchController {
                        .getJSONObject(0)
                        .getString("DOC_NUM");
 
-      return "Document Number: "+ output;
+      return "testResults";
    }
 }
