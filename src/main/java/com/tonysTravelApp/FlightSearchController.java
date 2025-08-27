@@ -76,7 +76,7 @@ public class FlightSearchController {
    }
 
    @GetMapping("/test")
-   public String test()
+   public String test(Model model)
    {
       String input = "{\r\n" + //
                     "    \"d\": {\r\n" + //
@@ -126,6 +126,8 @@ public class FlightSearchController {
                        .getJSONArray("results")
                        .getJSONObject(0)
                        .getString("DOC_NUM");
+
+      model.addAttribute("output", output);
 
       return "testResults";
    }
