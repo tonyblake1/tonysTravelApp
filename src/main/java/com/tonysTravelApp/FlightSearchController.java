@@ -48,15 +48,18 @@ public class FlightSearchController {
            @RequestParam(name="adults", required=true, defaultValue="2")  int adults, 
            Model model)
    {
-       
-        String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
-
+        // Add input data to model
         model.addAttribute("origin", origin);
         model.addAttribute("destination", destination);
         model.addAttribute("departureDate", departureDate);
         model.addAttribute("adults", adults);
 
+        String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+
         String data = parseData(response);
+
+        // Add output data to model
+        model.addAttribute("data", data);
 
         return "searchResults";
    }
