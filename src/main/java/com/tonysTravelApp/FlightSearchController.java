@@ -1,5 +1,7 @@
 package com.tonysTravelApp;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.boot.json.JsonParser;
@@ -35,10 +37,10 @@ public class FlightSearchController {
     * @return A JSON string response containing flight search results.
     */
 
-   @GetMapping("/")
+   /* @GetMapping("/")
    public String getIndexView() {
        return "index";
-   }
+   } */
    
    @GetMapping("/search")
    public String searchFlights(
