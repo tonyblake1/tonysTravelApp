@@ -6,8 +6,11 @@
 </head>
 <body>
     <p th:text="|Welcome to Tony's Travel App. More to come! ***TESTING***|" />
-    <select name="cities">
-       <option th:each="cities : ${cityList}" th:text="${cities}"/>
-    </select></tr>
+    <form th:action="@{/search}" method="post">
+        <select name="cities">
+            <option th:each="cities : ${cityList}" th:text="${cities}"/>
+        </select></tr>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
