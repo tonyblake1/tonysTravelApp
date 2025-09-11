@@ -16,7 +16,7 @@ public class Trip {
     private String adults;
 
     // getter methods
-    public String getOrigin()
+   /*  public String getOrigin()
     {
        return origin;
     }
@@ -34,7 +34,7 @@ public class Trip {
     public String getAdults()
     {
         return adults;
-    }
+    } */
 }
 
 

@@ -46,16 +46,17 @@ public class FlightSearchController {
    public String searchFlights(@ModelAttribute("trip") Trip trip, Model model)
    {
       // get object data
-      String origin = trip.getOrigin();
+      /* String origin = trip.getOrigin();
       String destination = trip.getDestination();
       String departureDate = trip.getDepartureDate();
-      String adults = trip.getAdults();
+      String adults = trip.getAdults(); */
 
       // Add data to model
-      model.addAttribute("origin", origin);
+      model.addAttribute("getdata", trip.toString()); // debug
+      /* model.addAttribute("origin", origin);
       model.addAttribute("destination", destination);
       model.addAttribute("departureDate", departureDate);
-      model.addAttribute("adults", adults);
+      model.addAttribute("adults", adults); */
 
         //String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
 

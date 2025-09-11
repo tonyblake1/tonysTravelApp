@@ -5,11 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="|Origin: ${origin}|" />
-    <p th:text="|Destination: ${destination}|" />
-    <p th:text="|Departure Date: ${departureDate}|" />
-    <p th:text="|Adults: ${adults}|" />
-    <br>
-    <p th:text="|Data: ${data}"/>
+    <form th:action="@{/search}" th:object=${trip}>
+       <h3 align="center">Data from the form</h3>
+       <div style="font-size: large;" align="center" th:text=${getdata}></div> <!-- debug -->
+       <!-- <p th:text="|Origin: ${trip.origin}|" />
+       <p th:text="|Destination: ${trip.destination}|" />
+       <p th:text="|Departure Date: ${trip.departureDate}|" />
+       <p th:text="|Adults: ${trip.adults}|" />
+       <br>
+       <p th:text="|Data: ${data}"/> -->
+    </form> 
 </body>
 </html>
