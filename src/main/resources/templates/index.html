@@ -7,10 +7,10 @@
 <body>
     <p th:text="|Welcome to Tony's Travel App!|" />
     <p th:text="|Enter your search criteria:|" />
-    <form th:action="@{/search}" method="post">
+    <form th:action="@{/search}" th:object="${trip}" method="post">
         <div style="display: inline-block">Origin:
             <div>
-               <select name="cities">
+               <select name="origin">
                   <option selected="selected">select</option>
                   <option th:each="cities : ${cityList}" th:text="${cities}"/>
                </select>
@@ -18,7 +18,7 @@
         </div>
         <div style="display: inline-block">Destination:
             <div>
-               <select name="cities">
+               <select name="destination">
                    <option selected="selected">select</option>
                    <option th:each="cities : ${cityList}" th:text="${cities}"/>
                </select>
@@ -26,12 +26,12 @@
         </div>
         <div style="display: inline-block">Departure Date:
         <div>
-           <input type="date" id="departureDate" name="departureDate">
+           <input name="departureDate" id="departureDate" type="date">
         </div>
         </div>
         <div style="display: inline-block">Adults:
             <div>
-               <select>
+               <select name="adults">
                    <option selected="selected">select</option>
                    <option>1</option>
                    <option>2</option>

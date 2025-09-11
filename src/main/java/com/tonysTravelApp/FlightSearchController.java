@@ -43,25 +43,26 @@ public class FlightSearchController {
    } */
    
    @GetMapping("/search")
-   public String searchFlights(
-           @RequestParam(name="origin", required=true, defaultValue="DUB") String origin,
-           @RequestParam(name="destination", required=true, defaultValue="NYC") String destination,
-           @RequestParam(name="departureDate", required=true, defaultValue="2025-09-01") String departureDate,
-           @RequestParam(name="adults", required=true, defaultValue="2")  int adults, 
-           Model model)
+   public String searchFlights(@ModelAttribute("trip") Trip trip, Model model)
    {
-        // Add input data to model
-        model.addAttribute("origin", origin);
-        model.addAttribute("destination", destination);
-        model.addAttribute("departureDate", departureDate);
-        model.addAttribute("adults", adults);
+      // get object data
+      String origin = trip.getOrigin();
+      String destination = trip.getDestination();
+      String departureDate = trip.getDepartureDate();
+      String adults = trip.getAdults();
 
-        String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+      // Add data to model
+      model.addAttribute("origin", origin);
+      model.addAttribute("destination", destination);
+      model.addAttribute("departureDate", departureDate);
+      model.addAttribute("adults", adults);
 
-        String data = parseData(response);
+        //String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+
+        //String data = parseData(response);
 
         // Add output data to model
-        model.addAttribute("data", data);
+        //model.addAttribute("data", data);
 
         return "searchResults";
    }
