@@ -11,6 +11,7 @@
         <div style="display: inline-block">Flying From:
             <div>
                <select name="cities">
+                  <option selected="selected">select</option>
                   <option th:each="cities : ${cityList}" th:text="${cities}"/>
                </select>
             </div>
@@ -18,13 +19,14 @@
         <div style="display: inline-block">Flying To:
             <div>
                <select name="cities">
-                  <option th:each="cities : ${cityList}" th:text="${cities}"/>
+                   <option selected="selected">select</option>
+                   <option th:each="cities : ${cityList}" th:text="${cities}"/>
                </select>
             </div>
         </div>
-        <div style="display: inline-block">
+        <p style="display: inline-block">
            <button type="submit">Submit</button>
-        </div>
+        </p>
     </form>
 </body>
 </html>
