@@ -4,46 +4,12 @@
     <title>Tony's Travel App</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
-    <p th:text="|Welcome to Tony's Travel App!|" />
-    <p th:text="|Enter your search criteria:|" />
+<body style="background-color: #f0f4c3">
     <form th:action="@{/search}" th:object="${trip}" method="post">
-        <div style="display: inline-block">Origin:
-            <div>
-               <select name="origin">
-                  <option selected="selected">select</option>
-                  <option th:each="cities : ${cityList}" th:text="${cities}"/>
-               </select>
-            </div>
-        </div>
-        <div style="display: inline-block">Destination:
-            <div>
-               <select name="destination">
-                   <option selected="selected">select</option>
-                   <option th:each="cities : ${cityList}" th:text="${cities}"/>
-               </select>
-            </div>
-        </div>
-        <div style="display: inline-block">Departure Date:
-        <div>
-           <input name="departureDate" id="departureDate" type="date">
-        </div>
-        </div>
-        <div style="display: inline-block">Adults:
-            <div>
-               <select name="adults">
-                   <option selected="selected">select</option>
-                   <option>1</option>
-                   <option>2</option>
-                   <option>3</option>
-                   <option>4</option>
-                   <option>5</option>
-               </select>
-            </div>
-        </div>
-        <p style="display: inline-block">
-           <button type="submit">Submit</button>
-        </p>
+        <select name="origin">
+            <option th:each="origin : ${originList}" th:text="${origin}"/>
+        </select></tr>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>

@@ -22,6 +22,25 @@ import org.json.JSONObject;
 //@RestController
 @Controller
 public class FlightSearchController {
+
+   List<String> originList;
+
+   @ModelAttribute
+   public void preLoad(Model model){
+  
+      originList = new ArrayList<>();
+      originList.add("Dublin");
+      originList.add("London");
+      originList.add("New York");
+   }
+
+   @GetMapping("/")
+   public String getIndexView(Model model) {
+
+      model.addAttribute("originList", originList);
+
+      return "index";
+   }
    
    private final AmadeusApiClientService amadeusApiClientService;
    
@@ -36,27 +55,11 @@ public class FlightSearchController {
     * @param adults The number of adults traveling (default is 1).
     * @return A JSON string response containing flight search results.
     */
-
-   /* @GetMapping("/")
-   public String getIndexView() {
-       return "index";
-   } */
    
-   @GetMapping("/search")
-   public String searchFlights(@ModelAttribute("trip") Trip trip, Model model)
+   @PostMapping(value="/search")
+   public String search(@ModelAttribute("trip") Trip trip, Model model)
    {
-      // get object data
-      /* String origin = trip.getOrigin();
-      String destination = trip.getDestination();
-      String departureDate = trip.getDepartureDate();
-      String adults = trip.getAdults(); */
-
-      // Add data to model
       model.addAttribute("getdata", trip.toString()); // debug
-      /* model.addAttribute("origin", origin);
-      model.addAttribute("destination", destination);
-      model.addAttribute("departureDate", departureDate);
-      model.addAttribute("adults", adults); */
 
         //String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
 
@@ -65,7 +68,7 @@ public class FlightSearchController {
         // Add output data to model
         //model.addAttribute("data", data);
 
-        return "searchResults";
+      return "searchResults";
    }
 
    public String parseData(String input)

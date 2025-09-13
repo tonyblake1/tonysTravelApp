@@ -4,16 +4,11 @@
     <title>Tony's Travel App</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
+<body style="background-color: #f0f4c3">
     <form th:action="@{/search}" th:object=${trip}>
-       <h3 align="center">Data from the form</h3>
-       <div style="font-size: large;" align="center" th:text=${getdata}></div> <!-- debug -->
-       <!-- <p th:text="|Origin: ${trip.origin}|" />
-       <p th:text="|Destination: ${trip.destination}|" />
-       <p th:text="|Departure Date: ${trip.departureDate}|" />
-       <p th:text="|Adults: ${trip.adults}|" />
-       <br>
-       <p th:text="|Data: ${data}"/> -->
-    </form> 
+        <h3 align="center">Data from the form</h3>
+        <div style="font-size: large;" align="center" th:text=${getdata}></div>
+        </div>
+    </form>
 </body>
 </html>
