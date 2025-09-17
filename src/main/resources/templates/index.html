@@ -20,6 +20,11 @@
                 <option th:each="destination : ${destinationList}" th:text="${destination}"/>
             </select>
         </div>
+        <!-- DepartureDate -->
+        <div style="display: inline-block">
+            Departure Date: 
+            <input name="departureDate" id="departureDate" type="date">
+        </div> 
         <!-- Submit -->
         <p>
             <button type="submit">Submit</button>
