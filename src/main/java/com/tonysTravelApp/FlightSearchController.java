@@ -25,6 +25,7 @@ public class FlightSearchController {
 
    List<String> originList;
    List<String> destinationList;
+   List<String> adultsList;
 
    @ModelAttribute
    public void preLoad(Model model){
@@ -40,6 +41,14 @@ public class FlightSearchController {
       destinationList.add("Paris");
       destinationList.add("Berlin");
       destinationList.add("Milan");
+
+      // Adults
+      adultsList = new ArrayList<>();
+      adultsList.add("1");
+      adultsList.add("2");
+      adultsList.add("3");
+      adultsList.add("4");
+      adultsList.add("5");
    }
 
    @GetMapping("/")
@@ -47,6 +56,7 @@ public class FlightSearchController {
 
       model.addAttribute("originList", originList);
       model.addAttribute("destinationList", destinationList);
+      model.addAttribute("adultsList", adultsList);
 
       return "index";
    }

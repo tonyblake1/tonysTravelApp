@@ -25,6 +25,13 @@
             Departure Date: 
             <input name="departureDate" id="departureDate" type="date">
         </div> 
+        <!-- Adults -->
+        <div style="display: inline-block">
+            Adults: 
+            <select name="adults">
+                <option th:each="adults : ${adultsList}" th:text="${adults}"/>
+            </select>
+        </div>
         <!-- Submit -->
         <p>
             <button type="submit">Submit</button>

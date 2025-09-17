@@ -12,6 +12,7 @@ public class Trip {
     private String origin;
     private String destination;
     private String departureDate;
+    private String adults;
 }
 
 
