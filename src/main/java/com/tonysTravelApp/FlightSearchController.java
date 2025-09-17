@@ -30,17 +30,17 @@ public class FlightSearchController {
    @ModelAttribute
    public void preLoad(Model model){
   
-      // Origin
+      // Origin                           
       originList = new ArrayList<>();
-      originList.add("Dublin");
-      originList.add("London");
-      originList.add("New York");
+      originList.add("DUB"); // Dublin
+      originList.add("LON"); // London
+      originList.add("NYC"); // New York
 
       // Destination
       destinationList = new ArrayList<>();
-      destinationList.add("Paris");
-      destinationList.add("Berlin");
-      destinationList.add("Milan");
+      destinationList.add("CDG"); // Paris (Charles de Gaulle)
+      destinationList.add("BER"); // Berlin
+      destinationList.add("MXP"); // Milan (Malpensa)
 
       // Adults
       adultsList = new ArrayList<>();
@@ -81,6 +81,8 @@ public class FlightSearchController {
       model.addAttribute("getdata", trip.toString()); // debug
 
         //String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+
+      
 
         //String data = parseData(response);
 
