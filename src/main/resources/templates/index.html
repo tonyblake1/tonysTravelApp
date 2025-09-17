@@ -6,10 +6,24 @@
 </head>
 <body style="background-color: #f0f4c3">
     <form th:action="@{/search}" th:object="${trip}" method="post">
-        <select name="origin">
-            <option th:each="origin : ${originList}" th:text="${origin}"/>
-        </select></tr>
-        <button type="submit">Submit</button>
+        <!-- Origin -->
+        <div style="display: inline-block">
+            Origin: 
+            <select name="origin">
+                <option th:each="origin : ${originList}" th:text="${origin}"/>
+            </select>
+        </div>
+        <!-- Destination -->
+        <div style="display: inline-block">
+            Destination: 
+            <select name="destination">
+                <option th:each="destination : ${destinationList}" th:text="${destination}"/>
+            </select>
+        </div>
+        <!-- Submit -->
+        <p>
+            <button type="submit">Submit</button>
+        </p>
     </form>
 </body>
 </html>

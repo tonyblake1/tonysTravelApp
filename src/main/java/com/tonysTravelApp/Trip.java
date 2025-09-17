@@ -10,6 +10,7 @@ import lombok.ToString;
 public class Trip {
     
     private String origin;
+    private String destination;
 }
 
 

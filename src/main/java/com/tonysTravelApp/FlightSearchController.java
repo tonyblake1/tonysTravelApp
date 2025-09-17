@@ -24,20 +24,29 @@ import org.json.JSONObject;
 public class FlightSearchController {
 
    List<String> originList;
+   List<String> destinationList;
 
    @ModelAttribute
    public void preLoad(Model model){
   
+      // Origin
       originList = new ArrayList<>();
       originList.add("Dublin");
       originList.add("London");
       originList.add("New York");
+
+      // Destination
+      destinationList = new ArrayList<>();
+      destinationList.add("Paris");
+      destinationList.add("Berlin");
+      destinationList.add("Milan");
    }
 
    @GetMapping("/")
    public String getIndexView(Model model) {
 
       model.addAttribute("originList", originList);
+      model.addAttribute("destinationList", destinationList);
 
       return "index";
    }
