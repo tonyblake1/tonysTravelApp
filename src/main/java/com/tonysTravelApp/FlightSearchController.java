@@ -78,16 +78,14 @@ public class FlightSearchController {
    @PostMapping(value="/search")
    public String search(@ModelAttribute("trip") Trip trip, Model model)
    {
-      model.addAttribute("getdata", trip.toString()); // debug
+      //model.addAttribute("getdata", trip.toString()); // debug
 
-        //String response = amadeusApiClientService.searchFlights(origin, destination, departureDate, adults);
+      String response = amadeusApiClientService.searchFlights(trip.getOrigin(), trip.getDestination(), trip.getDepartureDate(), trip.getAdults());
 
-      
+      model.addAttribute("response", response);
 
-        //String data = parseData(response);
-
-        // Add output data to model
-        //model.addAttribute("data", data);
+      /* String data = parseData(response);
+      model.addAttribute("data", data); */
 
       return "searchResults";
    }
