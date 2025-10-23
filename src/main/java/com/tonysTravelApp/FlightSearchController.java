@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -84,24 +86,19 @@ public class FlightSearchController {
 
       model.addAttribute("response", response);
 
-      /* String data = parseData(response);
-      model.addAttribute("data", data); */
+      String data = parseData(response);
+      model.addAttribute("data", data);
 
       return "searchResults";
    }
 
    public String parseData(String input)
    {
-      int output;
-
-      JSONObject jsonObject= new JSONObject(input);
+      JSONObject jsonObject = new JSONObject(input);
     
-      output=jsonObject.getJSONArray("data")
-                       .getJSONObject(0)
-                       .getInt("numberOfBookableSeats");
-                       
-
-      return "Number of bookable seats: " + output;
+      JSONArray json_data = jsonObject.getJSONArray("data");
+            
+      return "Size of data array: " + json_data.length();
    }
 
    @GetMapping("/test")

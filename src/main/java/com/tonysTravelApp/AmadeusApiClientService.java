@@ -89,6 +89,8 @@ public class AmadeusApiClientService {
                 .GET()
                 .build();
 
+            System.out.println(request); // debug
+
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
